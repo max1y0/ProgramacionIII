@@ -20,6 +20,11 @@ http.createServer(function(req, res){
         var fileStream = fs.createReadStream(imagePath);
         res.writeHead(200, {"Content-Type": "javascript"});
         fileStream.pipe(res);
+    }else if(req.url.match("\.index.html")){
+        fs.readFile("./index.html", "UTF-8", function(err, html){
+            res.writeHead(200, {"Content-Type": "text/html;charset=UTF-8"});
+            res.end(html);
+        });
     }else{
         res.writeHead(404, {"Content-Type": "text/html"});
         res.end("No Page Found");
