@@ -5,8 +5,8 @@ var path = require('path');
 http.createServer(function(req, res){
 
     if(req.url === "/"){
-        fs.readFile("./index.html", "UTF-8", function(err, html){
-            res.writeHead(200, {"Content-Type": "text/html"});
+        fs.readFile("./login.html", "UTF-8", function(err, html){
+            res.writeHead(200, {"Content-Type": "text/html;charset=UTF-8"});
             res.end(html);
         });
     }else if(req.url.match("\.css$")){
@@ -24,6 +24,20 @@ http.createServer(function(req, res){
         res.writeHead(404, {"Content-Type": "text/html"});
         res.end("No Page Found");
     }
+    
+    if (req.method === 'POST') {
+    let body = '';
+    req.on('data', chunk => {
+        body += chunk.toString(); // convert Buffer to string
+    });
+    req.on('end', () => {
+        console.log(body);
+        fs.readFile("./index.html", "UTF-8", function(err, html){
+            res.writeHead(200, {"Content-Type": "text/html;charset=UTF-8"});
+            res.end(html);
+        });
+    });
+}
 
 }).listen(8080);
 
@@ -44,3 +58,5 @@ con.connect(function(err) {
     console.log(result);
   });
 });
+
+
