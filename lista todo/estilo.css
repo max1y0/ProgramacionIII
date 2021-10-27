@@ -9,8 +9,7 @@ body {
 }
 header{
 	color: #FAFA80;
-	font-size: 2rem;
-	text-shadow: -1px 0 red,-1px 0 red,-1px 0 red,-1px 0 red; 
+	font-size: 2rem; 
 }
 header, form{
 	display: flex;
