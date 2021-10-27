@@ -21,7 +21,7 @@ function agregar(e){
 	datos.value=""
 }
 
-async function getUsers() {
+async function getItems() {
     let url = 'datos.json';
     try {
         let res = await fetch(url);
@@ -31,13 +31,11 @@ async function getUsers() {
     }
 }
 
-async function renderUsers() {
-    let users = await getUsers();
+async function renderItems() {
+    let items = await getItems();
     let html = '';
-    users.forEach(user => {
-        let htmlSegment = `<div class="user">
-                            <h2>${user.contenido}</h2>
-                        </div>`;
+    items.forEach(item => {
+        let htmlSegment = `<li>${item.contenido}</li>`;
 
         html += htmlSegment;
     });
@@ -46,4 +44,4 @@ async function renderUsers() {
     container.innerHTML = html;
 }
 
-renderUsers();
+renderItems();
