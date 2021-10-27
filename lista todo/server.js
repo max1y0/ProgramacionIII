@@ -46,26 +46,28 @@ http.createServer(function (req, res) {
                 pass = pass[1]
                 usuario = decodeURIComponent(usuario.replace(/\+/g, ' '));
                 console.log(usuario)
-                con.connect(function (err) {
+                pool.getConnection(function (err, con) {
                     if (err) throw err;
-                });
-                let contenido
-                con.query("select mail from usuario where mail ='" + usuario + "'", function (err, result, fields) {
 
-                    console.log(result)
-                    if (result == '') {
-                        //si la query llega vacia, el usuario no existe y lo creo
-                        console.log("no esta")
-                        con.query("insert into usuario values ('" + usuario + "', '" + pass + "');")
-                        contenido = ''
-                    }
-                });
-                //la query no llega vacia, hago la query completa y guardo en json
-                con.query("select item.contenido from usuario inner join todo on '" + usuario + "' =todo.mail_user and '" + usuario + "'= usuario.mail inner  join item on todo.id =item.id_todo", function (err, result, fields) {
-                    console.log(result)
-                    //aca a la variable contenido tengo que darle el json de result
-                    //y guardar ese contenido en un archivo que se llame
-                    //datos.json
+                    let contenido
+                    con.query("select mail from usuario where mail ='" + usuario + "'", function (err, result, fields) {
+
+                        console.log(result)
+                        if (result == '') {
+                            //si la query llega vacia, el usuario no existe y lo creo
+                            console.log("no esta")
+                            con.query("insert into usuario values ('" + usuario + "', '" + pass + "');")
+                            contenido = ''
+                        }
+                    });
+                    //la query no llega vacia, hago la query completa y guardo en json
+                    con.query("select item.contenido from usuario inner join todo on '" + usuario + "' =todo.mail_user and '" + usuario + "'= usuario.mail inner  join item on todo.id =item.id_todo", function (err, result, fields) {
+                        console.log(result)
+                        //aca a la variable contenido tengo que darle el json de result
+                        //y guardar ese contenido en un archivo que se llame
+                        //datos.json
+                    });
+                    con.release();
                 });
             });
         }
@@ -89,10 +91,9 @@ var mysql = require('mysql');
 const { SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION } = require('constants');
 const { getMaxListeners } = require('process');
 
-var con = mysql.createConnection({
+const pool = mysql.createPool({
     host: "localhost",
     user: "root",
     password: "root",
     database: "tododb"
 });
-
