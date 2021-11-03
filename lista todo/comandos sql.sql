@@ -106,6 +106,7 @@ UNLOCK TABLES;
 
 -- Dump completed on 2021-10-27 13:33:16
 
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
 
 flush privileges;
+
