@@ -61,21 +61,32 @@ http.createServer(function (req, res) {
                         }
                     });
                     //la query no llega vacia, hago la query completa y guardo en json
-                    con.query("select item.contenido from usuario inner join todo on '" + usuario + "' =todo.mail_user and '" + usuario + "'= usuario.mail inner  join item on todo.id =item.id_todo", function (err, result, fields) {
+                    con.query("select item.contenido, usuario.mail from usuario inner join todo on '" + usuario + "' =todo.mail_user and '" + usuario + "'= usuario.mail inner  join item on todo.id =item.id_todo", function (err, result, fields) {
                         console.log(result)
-                        //aca a la variable contenido tengo que darle el json de result
-                        //y guardar ese contenido en un archivo que se llame
-                        //datos.json
+                        contenido = JSON.stringify(result)
+                        console.log(contenido)
+                        fs.writeFile('datos.json', contenido, (err) => {
+                            if (err) throw err;
+                            console.log('Data written to file');
+                        });
                     });
                     con.release();
                 });
             });
+        }
+        if (req.method === 'GET'){
+            let body = '';
+            req.on('data', chunk => {
+                body += chunk.toString();
+            });
+            console.log(body)
         }
         fs.readFile("./index.html", "UTF-8", function (err, html) {
 
             res.writeHead(200, { "Content-Type": "text/html;charset=UTF-8" });
             res.end(html);
         });
+
         //404 caso contrario
     } else {
         res.writeHead(404, { "Content-Type": "text/html" });
