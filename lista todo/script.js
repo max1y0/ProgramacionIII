@@ -4,22 +4,24 @@ const boton = document.querySelector(".todo-button")
 const datos = document.querySelector(".todo-input")
 const lista = document.querySelector(".todo-list")
 
+let arregloItems = []
+
 boton.addEventListener("click", agregar)
 
+
 //agrega el item a la todo
-function agregar(e){
-	e.preventDefault()
-	test()
-	const item = document.createElement("li")
-	const boton = document.createElement("button")
-	boton.classList.add("delete-button")
-	item.innerText = datos.value
-	if (datos.value != ""){
-		lista.appendChild(item)
-		item.appendChild(boton)
-	}
-	datos.value=""
+function agregar(e) {
+    e.preventDefault()
+    if (datos.value != ""){
+        arregloItems.push(datos.value)
+    }
+    console.log(arregloItems)
+    datos.value=""  
+
+    renderItems(arregloItems);
 }
+
+
 
 async function getItems() {
     let url = 'datos.json';
@@ -31,17 +33,40 @@ async function getItems() {
     }
 }
 
-async function renderItems() {
+async function pushItems() {
     let items = await getItems();
-    let html = '';
     items.forEach(item => {
-        let htmlSegment = `<li>${item.contenido}</li>`;
-
-        html += htmlSegment;
+        arregloItems.push(item.contenido)
     });
 
-    let container = document.querySelector('.todo-list');
+    renderItems(arregloItems);
+
+
+}
+
+function renderItems(arregloItems) {
+
+    console.log(arregloItems)
+    const item = document.createElement("li")
+    const boton = document.createElement("button")
+    boton.classList.add('delete-button')
+    item.classList.add('li')
+    for (let x of arregloItems) {
+        item.innerText = x
+        lista.appendChild(item)
+        item.appendChild(boton)
+
+        datos.value = ""
+    }
+}
+
+async function renderUser() {
+    let users = await getItems();
+    let html = `Lista de ${users[0].mail}`;
+
+    let container = document.querySelector('.titulo');
     container.innerHTML = html;
 }
 
-renderItems();
+pushItems();
+renderUser();
