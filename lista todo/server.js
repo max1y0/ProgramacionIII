@@ -1,7 +1,8 @@
 var http = require('http');
 var fs = require('fs');
 var path = require('path');
-let mail = "maxi@gmail.com"
+const url =require ('url')
+
 //creamos el server y esperamos el post desde el login
 http.createServer(function (req, res) {
     //carga la pagina del login
@@ -63,7 +64,7 @@ http.createServer(function (req, res) {
                     //la query no llega vacia, hago la query completa y guardo en json
                     con.query("select item.contenido, usuario.mail from usuario inner join todo on '" + usuario + "' =todo.mail_user and '" + usuario + "'= usuario.mail inner  join item on todo.id =item.id_todo", function (err, result, fields) {
                         console.log(result)
-                        contenido = JSON.stringify(result)
+                        contenido = JSON.stringify(result, (k,v) => v === undefined ? null : v)
                         console.log(contenido)
                         fs.writeFile('datos.json', contenido, (err) => {
                             if (err) throw err;
@@ -75,11 +76,14 @@ http.createServer(function (req, res) {
             });
         }
         if (req.method === 'GET'){
-            let body = '';
-            req.on('data', chunk => {
-                body += chunk.toString();
+            var fullUrl = new URL('http://' + req.headers.host + req.url)
+            var item = fullUrl.searchParams.get('item')
+            console.log(item);
+            req.on('end', () => {
+                console.log('entre al end')
+                //aca se podria agregar la query para poder agregar el item a la base de datos
             });
-            console.log(body)
+
         }
         fs.readFile("./index.html", "UTF-8", function (err, html) {
 
@@ -94,7 +98,7 @@ http.createServer(function (req, res) {
     }
 
 
-}).listen(8080);
+}).listen(8000);
 
 
 //conexion con la base de datos
