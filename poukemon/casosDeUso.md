@@ -6,7 +6,7 @@
 * Comer muy seguido empeora la salud
 * Si el apetito está vacío por 30 min. afecta la salud
 * Mimar al bicho sube el ánimo
-* Hacer nada baja el ånimo, 4 minutos por 1 unidad.
+* Hacer nada baja el ánimo, 4 minutos por 1 unidad.
 * Tiempo inactivo (sin abrir el app) baja el ánimo cada 2 h.
 * Si el ánimo está vacío por 24 h. afecta la salud.
 * Al dormir el ánimo baja
