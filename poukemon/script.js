@@ -9,6 +9,10 @@ let poukemon = {
 	cantCacas: 0,
 }
 
+const stats = document.getElementById("stats")
+
+stats.innerHTML = "vida: "+poukemon.vida
+
 function comer(){
 	poukemon.saciedad += 1
 	console.log(poukemon.saciedad)
@@ -31,4 +35,16 @@ function limpiar(){
 
 function guardar() {
 	// hacer un json con los datos del pou y la fecha y hora de guardado
+	const dateObj = new Date();
+	console.log( dateObj.getDate() + '/' + dateObj.getUTCMonth() )
+	console.log( dateObj.getHours() + ':' + dateObj.getUTCMinutes() )
+
+	fetch('https://index.html/vida='+poukemon.vida)
+	.then(data => {
+		return data.json();
+	})
+	.then(post => {
+		console.log(post.title);
+	});
+
 }
