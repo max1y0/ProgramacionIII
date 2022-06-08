@@ -11,11 +11,15 @@ let poukemon = {
 
 const stats = document.getElementById("stats")
 
-stats.innerHTML = "vida: "+poukemon.vida
+
+function render(){
+	stats.innerHTML = "Saciedad: "+poukemon.saciedad
+}
 
 function comer(){
 	poukemon.saciedad += 1
 	console.log(poukemon.saciedad)
+	render()
 }
 
 function mimar(){
@@ -48,3 +52,6 @@ function guardar() {
 	});
 
 }
+
+
+render()
