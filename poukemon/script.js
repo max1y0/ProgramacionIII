@@ -43,7 +43,7 @@ function guardar() {
 	console.log( dateObj.getDate() + '/' + dateObj.getUTCMonth() )
 	console.log( dateObj.getHours() + ':' + dateObj.getUTCMinutes() )
 
-	fetch('https://index.html/vida='+poukemon.vida)
+	fetch('https://index.html/')
 	.then(data => {
 		return data.json();
 	})
