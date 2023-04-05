@@ -17,15 +17,16 @@ while ():
         # cargar
         pass
     elif (opcion ==2):
+        # eliminar
         pass
     elif (opcion ==3):
+        #modificar
         pass
     elif (opcion ==4):
         #listar
         pass
     elif (opcion ==5):
-        pass
-    elif (opcion ==6):
+        #listar con envio
         pass
 
 
