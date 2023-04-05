@@ -1,3 +1,5 @@
+from comanda import Comanda
+
 print('1- cargar comanda')
 print('2- eliminar comanda')
 print('3- modificar comanda')
