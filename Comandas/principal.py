@@ -1,25 +1,31 @@
 from comanda import Comanda
 
-print('1- cargar comanda')
-print('2- eliminar comanda')
-print('3- modificar comanda')
-print('4- listar comanda')
-print('5- listar comandas con envío')
-print('6- salir')
+listaComandas = []
 
-opcion = int(input())
+opcion = 0
+while ():
+    print('1- cargar comanda')
+    print('2- eliminar comanda')
+    print('3- modificar comanda')
+    print('4- listar comanda')
+    print('5- listar comandas con envío')
+    print('6- salir')
 
-if (opcion == 1):
-    # cargar
-elif (opcion ==2):
-    #eliminar
-elif (opcion ==3):
-    #modificar
-elif (opcion ==4):
-    #listar
-elif (opcion ==5):
-    #listarEnvio
-elif (opcion ==6):
-    #salir
+    opcion = int(input())
+
+    if (opcion == 1):
+        # cargar
+        pass
+    elif (opcion ==2):
+        pass
+    elif (opcion ==3):
+        pass
+    elif (opcion ==4):
+        #listar
+        pass
+    elif (opcion ==5):
+        pass
+    elif (opcion ==6):
+        pass
 
 
