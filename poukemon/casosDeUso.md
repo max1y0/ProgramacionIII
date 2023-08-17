@@ -14,6 +14,6 @@
 * a las 11 horas despuerto llegamos a 20% de energía
 * Si salud está vacía, entra en _agonización_
 * Cuando sube 1/3 de apetito al comer y pasan 2-4 hs. hace caca
-Si esta al lado de una caca por 2m. La higiene baja una unidad
+* Si esta al lado de una caca por 2m. La higiene baja una unidad
 * bañar reinicia la higuiene
 * limpiar elimina cacas

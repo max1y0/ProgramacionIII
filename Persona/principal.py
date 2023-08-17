@@ -10,7 +10,7 @@ persona2 = Persona(	input("como te llamas"),
 					input("dame tu dni"),
 					int(input("que edad tenes")))
 
-if (persona1.edad > persona2.edad):
-	print("el mas joven es ", persona2.nombre)
-else:
-	print("el mas joven es ", persona1.nombre)
+persona3 = Persona(	input("como te llamas"),
+					input("dame tu dni"),
+					int(input("que edad tenes")))
+
