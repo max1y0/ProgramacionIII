@@ -1,1 +1,29 @@
-{{nombre}}
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'mascota.css' %}">
+</head>
+
+<body>
+
+    <h1 class="nombre"> nombre: {{nombre}}</h1>
+
+    <img src="{% static 'senior.png' %}">
+
+    <div class="menu">
+        <form method="post" action="{% url 'alimentar_mascota' %}">
+            {% csrf_token %}
+            <button type="submit">Nomnom</button>
+        </form>
+        <button>Mimitis</button><br>
+        <button>Ducha</button>
+    </div>
+    <form action="{% url 'stats' %}">
+        <button class="stats" type="submit">stats</button>
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'mascota.css' %}">
+</head>
+
+<body>
+
+    <h1 class="nombre"> nombre: {{nombre}}</h1>
+
+    <img src="{% static 'senior.png' %}">
+
+    <p class="salud"> salud: {{salud}}</p>
+    <p class="hambre"> hambre: {{hambre}}</p>
+    <p class="diversion"> diversion: {{diversion}}</p>
+    <a href="/mascota">Volver</a>
+
+</body>
+
+</html>

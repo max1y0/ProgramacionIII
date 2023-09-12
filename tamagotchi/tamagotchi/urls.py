@@ -21,4 +21,6 @@ from mascota import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('mascota/', views.mascota),
+    path('stats/', views.stats, name='stats'),
+    path('mascota/alimentar/', views.alimentar_mascota, name='alimentar_mascota'),
 ]
