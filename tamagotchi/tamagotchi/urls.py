@@ -23,4 +23,7 @@ urlpatterns = [
     path('mascota/', views.mascota),
     path('stats/', views.stats, name='stats'),
     path('mascota/alimentar/', views.alimentar_mascota, name='alimentar_mascota'),
+    path('mascota/mimar/', views.mimar_mascota, name='mimar_mascota'),
+    path('mascota/mimir/', views.mimir_mascota, name='mimir_mascota'),
+    path('login/', views.CustomLoginView.as_view(), name='login'),
 ]

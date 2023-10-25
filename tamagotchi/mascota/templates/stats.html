@@ -8,14 +8,24 @@
 
 <body>
 
-    <h1 class="nombre"> nombre: {{nombre}}</h1>
+    <h1 class="nombre">{{nombre}}</h1>
 
-    <img src="{% static 'senior.png' %}">
+    <img class="mascota" src="{% static 'senior.png' %}">
+    <div class="menu">
 
-    <p class="salud"> salud: {{salud}}</p>
-    <p class="hambre"> hambre: {{hambre}}</p>
-    <p class="diversion"> diversion: {{diversion}}</p>
-    <a href="/mascota">Volver</a>
+        <p class="hambre"> hambre: </p>
+        <p class="numero">{{hambre}}</p>
+        <p class="diversion"> diversion:
+        <p class="numero">{{diversion}}</p>
+        <p class="salud"> salud:
+        <p class="numero">{{salud}}</p>
+    </div>
+    <div class="stats">
+        <form action="/mascota">
+            <button type="submit">
+                < </button>
+        </form>
+    </div>
 
 </body>
 

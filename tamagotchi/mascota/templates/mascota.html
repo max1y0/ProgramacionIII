@@ -8,21 +8,30 @@
 
 <body>
 
-    <h1 class="nombre"> nombre: {{nombre}}</h1>
+    <h1 class="nombre"> {{nombre}}</h1>
 
-    <img src="{% static 'senior.png' %}">
+    <img class="mascota" src="{% static 'senior.png' %}">
 
     <div class="menu">
         <form method="post" action="{% url 'alimentar_mascota' %}">
             {% csrf_token %}
             <button type="submit">Nomnom</button>
         </form>
-        <button>Mimitis</button><br>
-        <button>Ducha</button>
+        <form method="post" action="{% url 'mimar_mascota' %}">
+            {% csrf_token %}
+            <button type="submit">Mimitis</button>
+        </form>
+        <form method="post" action="{% url 'mimir_mascota' %}">
+            {% csrf_token %}
+            <button type="submit">Mimir</button>
+        </form>
     </div>
-    <form action="{% url 'stats' %}">
-        <button class="stats" type="submit">stats</button>
-    </form>
+    <div class="stats">
+
+        <form action="{% url 'stats' %}">
+            <button type="submit">stats</button>
+        </form>
+    </div>
 
 </body>
 
