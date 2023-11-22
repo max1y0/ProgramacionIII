@@ -15,8 +15,6 @@ def mascota (request):
 
         # Calcular la diferencia de tiempo desde la última actualización
         ultima_actualizacion = mascota.ultima_actualizacion
-        print(ultima_actualizacion)
-        print(ahora)
         tiempo_transcurrido = (ahora) - (ultima_actualizacion)
         
         # Disminuir los atributos basados en el tiempo transcurrido (ajusta la lógica según tus necesidades)
