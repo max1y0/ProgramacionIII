@@ -7,6 +7,7 @@ class tamagotchi (models.Model):
     salud = models.IntegerField()
     hambre = models.IntegerField()
     diversion = models.IntegerField()
+    ultima_actualizacion = models.DateTimeField(auto_now=True)  # Agrega el campo para la última actualización
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
