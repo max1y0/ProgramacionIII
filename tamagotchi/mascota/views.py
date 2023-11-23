@@ -16,19 +16,18 @@ def mascota (request):
         # Calcular la diferencia de tiempo desde la última actualización
         ultima_actualizacion = mascota.ultima_actualizacion
         tiempo_transcurrido = (ahora) - (ultima_actualizacion)
-        
-        # Disminuir los atributos basados en el tiempo transcurrido (ajusta la lógica según tus necesidades)
-        disminucion_salud = timedelta(seconds=10)
-        disminucion_hambre = timedelta(seconds=15)
-        disminucion_higiene = timedelta(seconds=20)
+        delta = tiempo_transcurrido.total_seconds()
 
-        if tiempo_transcurrido > disminucion_salud:
-            mascota.salud -= 1
-        if tiempo_transcurrido > disminucion_hambre:
-            mascota.hambre -= 1
-        if tiempo_transcurrido > disminucion_higiene:
-            mascota.diversion -= 1
+        # Disminuir los atributos basados en el tiempo transcurrido (ajusta la lógica según tus necesidades)
+        disminucion_salud = int(delta /10)
+        disminucion_hambre = int(delta /15)
+        disminucion_diversion= int(delta /20)
+
+        mascota.salud -= disminucion_salud
+        mascota.hambre -= disminucion_hambre
+        mascota.diversion -= disminucion_diversion
         mascota.save()
+        
         return render(request,'mascota.html',{
             'nombre': mascota.nombre,
         })
