@@ -21,7 +21,20 @@ def clientes():
 #menu productos
 @app.route('/productos')
 def productos():
+  return render_template('productos.html')
+
+@app.route('/agregar_productos')
+def agregar_productos():
   pass
+
+@app.route('/modificar_productos')
+def modificar_productos():
+  pass
+
+@app.route('/eliminar_productos')
+def eliminar_productos():
+  pass
+
 
 if __name__ == '__main__':
   app.run(debug=True)
