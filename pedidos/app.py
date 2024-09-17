@@ -1,5 +1,16 @@
 from flask import *
 
+import mysql.connector
+
+# Conexión a la base de datos
+conexion = mysql.connector.connect(
+	host="localhost",
+	user="root",
+	password="root",
+	database="proyecto_pedidos"
+)
+cursor = conexion.cursor()
+
 app = Flask(__name__)
 
 #página principal
@@ -21,11 +32,22 @@ def clientes():
 #menu productos
 @app.route('/productos')
 def productos():
-  return render_template('productos.html')
+  query = "SELECT * FROM Producto"
+  cursor.execute(query)
+  productos = cursor.fetchall()
+  return render_template('productos.html',productos=productos)
 
-@app.route('/agregar_productos')
+@app.route('/agregar_productos', methods=['POST'])
 def agregar_productos():
-  pass
+  #Obtengo los datos del formulario
+  descripcion = request.form.get('descripcion')
+  precio = request.form.get('precio')
+
+  #los agrego a la base de datos
+  query = 'INSERT INTO Producto (descripcion, precio) VALUES (%s, %s)'
+  cursor.execute(query, (descripcion,precio))
+  conexion.commit()
+  return redirect(url_for('productos'))
 
 @app.route('/modificar_productos')
 def modificar_productos():
