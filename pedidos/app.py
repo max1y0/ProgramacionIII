@@ -29,7 +29,7 @@ def pedidos():
 def clientes():
   pass
 
-#menu productos
+# ------------------------------- Menu productos  -------------------------------------------
 @app.route('/productos')
 def productos():
   query = "SELECT * FROM Producto"
@@ -49,13 +49,32 @@ def agregar_productos():
   conexion.commit()
   return redirect(url_for('productos'))
 
-@app.route('/modificar_productos')
+@app.route('/modificar_productos', methods=['POST'])
 def modificar_productos():
-  pass
+  #Obtengo el id que puso en el formulario
+  ID_producto = request.form.get('ID')
 
-@app.route('/eliminar_productos')
+  #Obtengo los campos modificados
+  descripcion = request.form.get('descripcion')
+  precio = request.form.get('precio')
+
+  #Ejecuto el SQL para modificar
+  query = 'UPDATE Producto SET descripcion = %s, precio = %s WHERE ID_Producto = %s'
+  cursor.execute(query, (descripcion,precio,ID_producto))
+  return redirect(url_for('productos'))
+  
+
+@app.route('/eliminar_productos', methods=['POST'])
 def eliminar_productos():
-  pass
+
+  #Obtengo el id que puso en el formulario
+  ID_producto = request.form.get('ID')
+
+  #Hago la query en la base de datos para eliminar el producto de ese ID
+  query = 'DELETE FROM Producto WHERE '+ID_producto+' = Producto.ID_Producto'
+  cursor.execute(query)
+  conexion.commit()
+  return redirect(url_for('productos'))
 
 
 if __name__ == '__main__':

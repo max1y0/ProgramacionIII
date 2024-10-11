@@ -3,14 +3,22 @@
 
 <body>
   <h1>Lista de productos cargados:</h1>
-  {% for producto in productos %}
-    {% for atributo in producto %}
-      {{atributo}}
+  
+  <table>
+    <th>ID</th>
+    <th>Descripcion</th>
+    <th>Precio</th>
+    {% for producto in productos %}
+      <tr>
+      {% for atributo in producto %}
+        <td>{{atributo}}</td>
+      {% endfor %}
+      </tr>
     {% endfor %}
-  {% endfor %}
+  </table>
+  
 
-  <h1>Menú Productos:</h1>
-  <h3>Agregar Producto</h3>
+  <h1>Agregar Producto</h1>
   <form action="{{ url_for('agregar_productos')}}" method="POST">
       <label for="descripcion">Descripcion:</label>
       <input type="text" id="descripcion" name="descripcion" required>
@@ -20,13 +28,31 @@
       <br>
       <input type="submit" value="Agregar">
   </form>
+  <h1>Eliminar un producto</h1>
+  <form action="{{ url_for('eliminar_productos')}}" method="POST">
+      <label for="ID">ID:</label>
+      <input type="number" id="ID" name="ID" required>
+      <br>
+      <input type="submit" value="Eliminar">
+  </form>
 
-  <a href="{{ url_for('eliminar_productos')}}">
-    <button>Eliminar</button>
-  </a>
-  <a href="{{ url_for('modificar_productos')}}">
-    <button>Modificar</button>
-  </a>
+  <h1>Modificar un producto</h1>
+  <form action="{{ url_for('modificar_productos')}}" method="POST">
+      <p> Ingresar un ID que corresponda a un producto ya ingresado</p>
+      <label for="ID">ID:</label>
+      <input type="number" id="ID" name="ID" required>
+      <br>
+      
+      <p> Modificar los campos: </p>
+      <label for="descripcion">Descripcion:</label>
+      <input type="text" id="descripcion" name="descripcion" required>
+      <br>
+      <label for="precio">Precio:</label>
+      <input type="number" id="precio" name="precio" required>
+      <br>
+      <input type="submit" value="Modificar">
+  </form>
+
 </body>
 
 </html>
