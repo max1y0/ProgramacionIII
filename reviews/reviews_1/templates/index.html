@@ -1,14 +1,22 @@
 <!doctype html>
 <html>
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="{{ url_for('static',filename='css/style.css') }}"
+    />
+
     <body>
-        <a href="{{ url_for('user_reviews')}}">
-            <button>reseñas por usuario</button>
-        </a>
-        <a href="{{ url_for('movie_reviews')}}">
-            <button>reseñas por pelicula</button>
-        </a>
-        <a href="{{ url_for('login')}}">
-            <button>entrar en el sistema</button>
-        </a>
+        <div class="menu">
+            <a class="button" href="{{ url_for('user_reviews')}}">
+                <button>reseñas por usuario</button>
+            </a>
+            <a class="button" href="{{ url_for('movie_reviews')}}">
+                <button>reseñas por pelicula</button>
+            </a>
+            <a class="button" href="{{ url_for('login')}}">
+                <button>entrar en el sistema</button>
+            </a>
+        </div>
     </body>
 </html>

@@ -1,0 +1,176 @@
+/* Reset y configuración base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+        Arial, sans-serif;
+    background-color: #faf9f7;
+    color: #2d2d2d;
+    line-height: 1.6;
+}
+
+/* Contenedor del menú */
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    padding: 24px;
+    margin: 20px auto;
+    max-width: 800px;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+/* Reset para todos los botones HTML */
+button {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    outline: none;
+}
+
+/* Estilos para botones */
+.button {
+    background-color: #f0ece2;
+    color: #2d2d2d;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 24px;
+    margin: 0 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.button:hover {
+    background-color: #e8e0d1;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Contenedor de las tarjetas */
+.box {
+    max-width: 800px;
+    border: 1px solid #e8e0d1;
+    border-radius: 12px;
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.bigbox {
+    width: 100%;
+    min-height: 120px;
+    padding: 16px;
+    margin: 16px;
+    border: 1px solid #e8e0d1;
+    border-radius: 12px;
+    background-color: #ffffff;
+    font-family: inherit;
+    font-size: 14px;
+    color: #2d2d2d;
+    line-height: 1.5;
+    resize: vertical;
+    outline: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.bigbox:focus {
+    border-color: #d4c5a9;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.bigbox::placeholder {
+    color: #9ca3af;
+    opacity: 0.7;
+}
+
+/* Estilos para las tarjetas */
+.card {
+    background-color: #ffffff;
+    border: 1px solid #e8e0d1;
+    border-radius: 16px;
+    padding: 24px;
+    margin: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: all 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border-color: #d4c5a9;
+}
+
+/* Título dentro de las tarjetas */
+.title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+/* Párrafo de reseña */
+.review {
+    font-size: 14px;
+    color: #5a5a5a;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 768px) {
+    .menu {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 16px;
+    }
+
+    .button {
+        margin: 4px;
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+
+    .box {
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .title {
+        font-size: 18px;
+    }
+
+    .review {
+        font-size: 13px;
+    }
+}

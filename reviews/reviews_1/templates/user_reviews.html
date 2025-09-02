@@ -1,9 +1,16 @@
 <!doctype html>
 <html>
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="{{ url_for('static',filename='css/style.css') }}"
+    />
     <body>
-        <h1>{{username}}</h1>
-        <h1>{{title}}</h1>
-        <h3>Reseña:</h3>
-        <p>{{review}}</p>
+        <div class="card">
+            <h1>{{username}}</h1>
+            <h1>{{title}}</h1>
+            <h3>Reseña:</h3>
+            <p>{{review}}</p>
+        </div>
     </body>
 </html>
